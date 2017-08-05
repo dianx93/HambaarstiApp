@@ -37,14 +37,26 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         model.addAttribute("list", dentistVisitService.listVisits());
         return "visitsList";
     }
-    
+
+    @PostMapping("/list")
+    public String postVisitsSearch(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "visitsList";
+        }
+
+        model.addAttribute("list", dentistVisitService.listVisitsByParameters(dentistVisitDTO.getDentistName(), 
+        		dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime()));
+        return "visitsList";
+    }
+
     @PostMapping("/")
     public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "form";
         }
 
-        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getGpName(), dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
+        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getGpName(), 
+        		dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
         return "redirect:/results";
     }
 
