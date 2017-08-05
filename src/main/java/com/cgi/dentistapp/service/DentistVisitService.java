@@ -18,8 +18,8 @@ public class DentistVisitService {
     @Autowired
     private DentistVisitDao dentistVisitDao;
 
-    public void addVisit(String dentistName, Date visitTime) {
-        DentistVisitEntity visit = new DentistVisitEntity(dentistName, visitTime);
+    public void addVisit(String dentistName, String gpName, Date visitDate, Date visitTime) {
+        DentistVisitEntity visit = new DentistVisitEntity(dentistName, gpName, visitDate, visitTime);
         dentistVisitDao.create(visit);
     }
 

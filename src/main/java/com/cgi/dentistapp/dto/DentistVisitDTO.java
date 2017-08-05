@@ -14,15 +14,25 @@ public class DentistVisitDTO {
     @Size(min = 1, max = 50)
     String dentistName;
 
+    @Size(min = 1, max = 50)
+    String gpName;
+    
+
     @NotNull
     @DateTimeFormat(pattern = "dd.MM.yyyy")
-    Date visitTime;
+    Date visitDate;
 
+    @NotNull
+    @DateTimeFormat(pattern = "HH:mm")
+    Date visitTime;
+    
     public DentistVisitDTO() {
     }
 
-    public DentistVisitDTO(String dentistName, Date visitTime) {
+    public DentistVisitDTO(String dentistName, String gpName, Date visitDate, Date visitTime) {
         this.dentistName = dentistName;
+        this.gpName = gpName;
+        this.visitDate = visitDate;
         this.visitTime = visitTime;
     }
 
@@ -34,6 +44,22 @@ public class DentistVisitDTO {
         this.dentistName = dentistName;
     }
 
+    public String getGpName() {
+        return gpName;
+    }
+
+    public void setGpName(String gpName) {
+        this.gpName = gpName;
+    }
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
+    }
+    
     public Date getVisitTime() {
         return visitTime;
     }

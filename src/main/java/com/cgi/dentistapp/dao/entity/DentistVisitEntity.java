@@ -17,13 +17,17 @@ public class DentistVisitEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "visit_date")
+    private Date visitDate;
+    
     @Column(name = "visit_time")
     private Date visitTime;
 
     public DentistVisitEntity() {
     }
 
-    public DentistVisitEntity(String dentistName, Date visitTime) {
+    public DentistVisitEntity(String dentistName, String gpName, Date visitDate, Date visitTime) {
+        this.setVisitDate(visitDate);
         this.setVisitTime(visitTime);
     }
 
@@ -35,6 +39,14 @@ public class DentistVisitEntity {
         this.id = id;
     }
 
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
+    }
+    
     public Date getVisitTime() {
         return visitTime;
     }
