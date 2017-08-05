@@ -1,0 +1,17 @@
+<html>
+<body>
+<a href="/"><button type="button">Tagasi registreeruma</button></a>
+	<table>
+        <tr>
+            <th>id</th>
+            <th th:text="#{visiidi.kuupaev}">visiidi.kuupaev</th>
+            <th th:text="#{visiidi.kellaaeg}">visiidi.kellaaeg</th>
+        </tr>
+        <tr th:each="visit :${list}">
+            <td th:text="${visit.id}"></td>
+            <td th:text="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"></td>
+            <td th:text="${#dates.format(visit.visitTime, 'HH:mm')}"></td>
+        </tr>
+    </table>
+</body>
+</html>

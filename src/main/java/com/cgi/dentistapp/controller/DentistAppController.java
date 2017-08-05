@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import com.cgi.dentistapp.service.DentistVisitService;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -31,6 +32,12 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         return "form";
     }
 
+    @GetMapping("/list")
+    public String showDentistVisitsList(DentistVisitDTO dentistVisitDTO, Model model) {
+        model.addAttribute("list", dentistVisitService.listVisits());
+        return "visitsList";
+    }
+    
     @PostMapping("/")
     public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
