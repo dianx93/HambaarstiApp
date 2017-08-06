@@ -39,4 +39,9 @@ public class DentistVisitService {
 		dentistVisitDao.deleteVisit(getVisitById(id));		
 	}
 
+	public void changeVisit(Long id, String dentistName, String gpName,
+			Date visitDate, Date visitTime) {
+		dentistVisitDao.changeVisit(getVisitById(id), dentistName, gpName, visitDate, visitTime);
+	}
+
 }

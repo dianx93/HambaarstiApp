@@ -40,4 +40,14 @@ public class DentistVisitDao {
 	public void deleteVisit(DentistVisitEntity dentistVisitEntity) {
 		entityManager.remove(dentistVisitEntity);
 	}
+
+	public void changeVisit(DentistVisitEntity dentistVisitEntity, String dentistName, String gpName,
+			Date visitDate, Date visitTime) {
+		dentistVisitEntity.setDentistName(dentistName);
+		dentistVisitEntity.setGpName(gpName);
+		dentistVisitEntity.setVisitDate(visitDate);
+		dentistVisitEntity.setVisitTime(visitTime);
+		entityManager.merge(dentistVisitEntity);
+		
+	}
 }

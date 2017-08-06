@@ -1,0 +1,37 @@
+<html>
+<body>
+<a href="/list"><button type="button" th:text="#{vaata.registreeringuid}">vaata.registreeringuid</button></a>
+<form action="#" th:action="@{'/visit/change/{id}'(id=${visit.id})}" th:object="${dentistVisitDTO}" method="post">
+    <table>
+        <tr>
+            <td><p th:text="#{arsti.nimi}">arsti.nimi</p></td>
+            <td><input type="text" th:name="dentistName" th:id="dentistName" th:value="${visit.dentistName}"/></td>
+            <td th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">Nime viga</td>
+        </tr>
+        <tr>
+            <td><p th:text="#{perearsti.nimi}">perearsti.nimi</p></td>
+            <td><select th:name="gpName" th:id="gpName" th:value="${visit.gpName}"/></td>
+            <td th:if="${#fields.hasErrors('gpName')}" th:errors="*{gpName}">Nime viga</td>
+        </tr>
+        <tr>
+            <td><p th:text="#{visiidi.kuupaev}">visiidi.kuupaev</p></td>
+            <td><input type="text" th:name="visitDate" th:id="visitDate" th:value="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"/></td>
+            <td th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}">Kuupäeva viga</td>
+        </tr>
+        <tr>
+            <td><p th:text="#{visiidi.kellaaeg}">visiidi.kellaaeg</p></td>
+            <td><input type="text" th:name="visitTime" th:id="visitTime" th:value="${#dates.format(visit.visitTime, 'HH:mm')}"/></td>
+            <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">Kellaaja viga</td>
+        </tr>
+        <tr>
+	        <td>
+	            <a th:href="@{'/visit/' + ${visit.id}}"><button type="button" th:text="#{tagasi}">tagasi</button></a>
+	        </td>
+            <td>
+                <button type="submit" th:text="#{salvesta.muudatused}">salvesta.muudatused</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

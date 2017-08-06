@@ -27,6 +27,12 @@
 		  <button type="submit" th:text="#{kustuta.visiit}">kustuta.visiit</button>
 		</form>
         </td>
+        <td>
+        <form action="#" th:action="@{'/visit/change/{id}'(id=${visit.id})}" th:method="get" >
+		  <input type="hidden" name="_method" value="get" />
+		  <button type="submit" th:text="#{muuda.visiiti}">muuda.visiiti</button>
+		</form>
+        </td>
     </tr>
 </table>
 </body>

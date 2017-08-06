@@ -49,6 +49,25 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     	return "detailedVisit";
     }
     
+    @GetMapping("/visit/change/{ID}")
+    public String showChangeVisitForm(DentistVisitDTO dentistVisitDTO, @PathVariable("ID") Long id, Model model){
+    	model.addAttribute("visit", dentistVisitService.getVisitById(id));
+    	return "changeVisit";
+    }    
+    
+    @PostMapping("/visit/change/{ID}")
+    public String postVisitsChange(@PathVariable("ID") Long id, @Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+        	model.addAttribute("visit", dentistVisitService.getVisitById(id));
+            return "changeVisit";
+        }
+
+        dentistVisitService.changeVisit(id, dentistVisitDTO.getDentistName(), dentistVisitDTO.getGpName(), 
+        		dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
+        model.addAttribute("visit", dentistVisitService.getVisitById(id));
+        return "detailedVisit";
+    }
+    
     @PostMapping("/list")
     public String postVisitsSearch(@Valid DentistVisitSearchDTO dentistVisitSearchDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {

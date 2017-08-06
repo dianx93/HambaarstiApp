@@ -51,7 +51,7 @@ public class DentistVisitEntity {
     	return dentistName;
     }
     
-    private void setDentistName(String dentistName) {
+    public void setDentistName(String dentistName) {
 		this.dentistName = dentistName;
 	}
     
@@ -59,7 +59,7 @@ public class DentistVisitEntity {
     	return gpName;
     }
     
-    private void setGpName(String gpName) {
+    public void setGpName(String gpName) {
 		this.gpName = gpName;
 	}
     
