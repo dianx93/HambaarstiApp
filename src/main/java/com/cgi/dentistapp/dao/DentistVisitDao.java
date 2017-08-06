@@ -27,9 +27,14 @@ public class DentistVisitDao {
 	public List<DentistVisitEntity> getVisitsByParameters(String dentistName,
 			Date visitDate, Date visitTime) {
 		StringBuilder sb = new StringBuilder();
-		if(dentistName != null) sb.append(" AND dentist_name = '" + dentistName + "'");
+		if(dentistName != "") sb.append(" AND dentist_name = '" + dentistName + "'");
 		if(visitDate != null) sb.append(" AND visit_date = '" +  new java.sql.Timestamp(visitDate.getTime()) + "'");
 		if(visitTime != null) sb.append(" AND visit_time = '" + new java.sql.Timestamp(visitTime.getTime()) + "'");
 		return entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE 0=0" + sb.toString()).getResultList();
+	}
+
+	public DentistVisitEntity getVisitById(int id){
+		System.err.println(entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE id = " + Integer.toString(id)).getFirstResult());
+		return (DentistVisitEntity) entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE id = " + Integer.toString(id)).getResultList().get(0);
 	}
 }

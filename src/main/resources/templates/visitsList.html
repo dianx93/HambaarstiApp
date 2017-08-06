@@ -1,7 +1,7 @@
 <html>
 <body>
 <a href="/"><button type="button">Tagasi registreeruma</button></a>
-<form action="#" th:action="@{/list}" th:object="${dentistVisitDTO}" method="post">
+<form action="#" th:action="@{/list}" th:object="${dentistVisitSearchDTO}" method="post">
     <table>
         <tr>
             <td><p th:text="#{arsti.nimi}">arsti.nimi</p></td>
@@ -31,11 +31,14 @@
             <th th:text="#{visiidi.kuupaev}">visiidi.kuupaev</th>
             <th th:text="#{visiidi.kellaaeg}">visiidi.kellaaeg</th>
         </tr>
-        <tr th:each="visit :${list}">
+        <th:block th:each="visit :${list}">
+        <tr th:onclick="'window.document.location=\'/visit/' + ${visit.id} + '\''">
             <td th:text="${visit.dentistName}"></td>
             <td th:text="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"></td>
             <td th:text="${#dates.format(visit.visitTime, 'HH:mm')}"></td>
+            <td><button type="button" th:text="#{vaata.detaile}"></button></td>
         </tr>
+        </th:block>
     </table>
 </body>
 </html>

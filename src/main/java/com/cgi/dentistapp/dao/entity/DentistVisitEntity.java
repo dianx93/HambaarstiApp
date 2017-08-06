@@ -20,6 +20,9 @@ public class DentistVisitEntity {
     @Column(name = "dentist_name")
     private String dentistName;
     
+    @Column(name = "gp_name")
+    private String gpName;
+    
     @Column(name = "visit_date")
     private Date visitDate;
     
@@ -31,6 +34,7 @@ public class DentistVisitEntity {
 
     public DentistVisitEntity(String dentistName, String gpName, Date visitDate, Date visitTime) {
     	this.setDentistName(dentistName);
+    	this.setGpName(gpName);
         this.setVisitDate(visitDate);
         this.setVisitTime(visitTime);
     }
@@ -49,6 +53,14 @@ public class DentistVisitEntity {
     
     private void setDentistName(String dentistName) {
 		this.dentistName = dentistName;
+	}
+    
+    public String getGpName() {
+    	return gpName;
+    }
+    
+    private void setGpName(String gpName) {
+		this.gpName = gpName;
 	}
     
     public Date getVisitDate() {

@@ -30,5 +30,9 @@ public class DentistVisitService {
     public List<DentistVisitEntity> listVisitsByParameters (String dentistName, Date visitDate, Date visitTime) {
         return dentistVisitDao.getVisitsByParameters(dentistName, visitDate, visitTime);
     }
+    
+    public DentistVisitEntity getVisitById (int id){
+    	return dentistVisitDao.getVisitById(id);
+    }
 
 }

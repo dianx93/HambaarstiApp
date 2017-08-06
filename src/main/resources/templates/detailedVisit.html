@@ -1,0 +1,27 @@
+<html>
+<body>
+<table>
+    <tr>
+        <td><p th:text="#{arsti.nimi}">arsti.nimi</p></td>
+        <td><p th:text="${visit.dentistName}"/></td>
+    </tr>
+    <tr>
+        <td><p th:text="#{perearsti.nimi}">perearsti.nimi</p></td>
+        <td><p th:text="${visit.gpName}"/></td>
+    </tr>
+    <tr>
+        <td><p th:text="#{visiidi.kuupaev}">visiidi.kuupaev</p></td>
+        <td><p th:text="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"/></td>
+    </tr>
+    <tr>
+        <td><p th:text="#{visiidi.kellaaeg}">visiidi.kellaaeg</p></td>
+        <td><p th:text="${#dates.format(visit.visitTime, 'HH:mm')}"/></td>
+    </tr>
+    <tr>
+        <td>
+            <a href="/list"><button type="button">Tagasi</button></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
