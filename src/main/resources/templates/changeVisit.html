@@ -24,6 +24,9 @@
             <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">Kellaaja viga</td>
         </tr>
         <tr>
+            <td th:if="${#fields.hasErrors('global')}" th:text="#{kattuvus}"  colspan="3">Kattuvus</td>
+        </tr>
+        <tr>
 	        <td>
 	            <a th:href="@{'/visit/' + ${visit.id}}"><button type="button" th:text="#{tagasi}">tagasi</button></a>
 	        </td>

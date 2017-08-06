@@ -24,6 +24,9 @@
             <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">Kellaaja viga</td>
         </tr>
         <tr>
+            <td th:if="${#fields.hasErrors('global')}" th:text="#{kattuvus}" colspan="3">Kattuvus</td>
+        </tr>
+        <tr>
             <td>
                 <button type="submit" th:text="#{registreeri.visiidile}">registreeri.visiidile</button>
             </td>

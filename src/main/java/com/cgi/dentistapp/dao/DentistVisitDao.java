@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.cgi.dentistapp.dao.entity.DentistVisitEntity;
+import com.cgi.dentistapp.dto.DentistVisitDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -48,6 +49,16 @@ public class DentistVisitDao {
 		dentistVisitEntity.setVisitDate(visitDate);
 		dentistVisitEntity.setVisitTime(visitTime);
 		entityManager.merge(dentistVisitEntity);
-		
 	}
+	
+	public boolean isConflictFree(DentistVisitDTO visit, Long id){
+		String idQuery = "";
+		if (id != null) idQuery = "id != '" + id + "' AND";
+		int conflicts = entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE " + idQuery + " dentist_name = '" + visit.getDentistName() 
+				+ "' AND visit_date = '" + new java.sql.Timestamp(visit.getVisitDate().getTime()) 
+				+ "' AND visit_time between DATEADD(minute, -29, '" + new java.sql.Timestamp(visit.getVisitTime().getTime()) + "')"
+				+ " AND DATEADD(minute, 29, '" + new java.sql.Timestamp(visit.getVisitTime().getTime()) + "')").getResultList().size();
+		return conflicts == 0;
+	}
+	
 }

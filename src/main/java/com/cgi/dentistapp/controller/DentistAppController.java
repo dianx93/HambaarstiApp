@@ -61,6 +61,11 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         	model.addAttribute("visit", dentistVisitService.getVisitById(id));
             return "changeVisit";
         }
+        dentistVisitService.isConflictFree(dentistVisitDTO, bindingResult, id);
+        if (bindingResult.hasErrors()) {
+        	model.addAttribute("visit", dentistVisitService.getVisitById(id));
+            return "changeVisit";
+        }
 
         dentistVisitService.changeVisit(id, dentistVisitDTO.getDentistName(), dentistVisitDTO.getGpName(), 
         		dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
@@ -84,7 +89,10 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         if (bindingResult.hasErrors()) {
             return "form";
         }
-
+        dentistVisitService.isConflictFree(dentistVisitDTO, bindingResult, null);
+        if (bindingResult.hasErrors()) {
+            return "form";
+        }
         dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getGpName(), 
         		dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
         return "redirect:/results";
