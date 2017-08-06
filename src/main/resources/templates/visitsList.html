@@ -1,6 +1,7 @@
 <html>
 <body>
 <a href="/"><button type="button" th:text="#{tagasi.registreeruma}"></button></a>
+<h2 th:text="#{visiitide.otsing}">visiitide.otsing</h2>
 <form action="#" th:action="@{/list}" th:object="${dentistVisitSearchDTO}" method="post">
     <table>
         <tr>

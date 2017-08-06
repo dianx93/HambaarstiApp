@@ -1,6 +1,7 @@
 <html>
 <body>
 <a href="/list"><button type="button" th:text="#{vaata.registreeringuid}">vaata.registreeringuid</button></a>
+<h2 th:text="#{visiidi.muutmine}">visiidi.muutmine</h2>
 <form action="#" th:action="@{'/visit/change/{id}'(id=${visit.id})}" th:object="${dentistVisitDTO}" method="post">
     <table>
         <tr>
