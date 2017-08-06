@@ -1,6 +1,6 @@
 <html>
 <body>
-<a href="/list"><button type="button">Vaata registreeringuid</button></a>
+<a href="/list"><button type="button" th:text="#{vaata.registreeringuid}">vaata.registreeringuid</button></a>
 <form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
     <table>
         <tr>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td>
-                <button type="submit" th:text="#{registreeri.visiidile}"></button>
+                <button type="submit" th:text="#{registreeri.visiidile}">registreeri.visiidile</button>
             </td>
         </tr>
     </table>

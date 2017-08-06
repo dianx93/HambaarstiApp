@@ -1,6 +1,6 @@
 <html>
 <body>
-<a href="/"><button type="button">Tagasi registreeruma</button></a>
+<a href="/"><button type="button" th:text="#{tagasi.registreeruma}"></button></a>
 <form action="#" th:action="@{/list}" th:object="${dentistVisitSearchDTO}" method="post">
     <table>
         <tr>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td>
-                <button type="submit" th:text="#{otsi.visiite}"></button>
+                <button type="submit" th:text="#{otsi.visiite}">otsi.visiite</button>
             </td>
         </tr>
     </table>
@@ -36,7 +36,7 @@
             <td th:text="${visit.dentistName}"></td>
             <td th:text="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"></td>
             <td th:text="${#dates.format(visit.visitTime, 'HH:mm')}"></td>
-            <td><button type="button" th:text="#{vaata.detaile}"></button></td>
+            <td><button type="button" th:text="#{vaata.detaile}">vaata.detaile</button></td>
         </tr>
         </th:block>
     </table>

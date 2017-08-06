@@ -19,7 +19,13 @@
     </tr>
     <tr>
         <td>
-            <a href="/list"><button type="button">Tagasi</button></a>
+            <a href="/list"><button type="button" th:text="#{tagasi}">tagasi</button></a>
+        </td>
+        <td>
+        <form action="#" th:action="@{'/delete/{id}'(id=${visit.id})}" th:method="post" >
+		  <input type="hidden" name="_method" value="post" />
+		  <button type="submit" th:text="#{kustuta.visiit}">kustuta.visiit</button>
+		</form>
         </td>
     </tr>
 </table>

@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.controller;
 
+import com.cgi.dentistapp.dao.entity.DentistVisitEntity;
 import com.cgi.dentistapp.dto.DentistVisitDTO;
 import com.cgi.dentistapp.dto.DentistVisitSearchDTO;
 
@@ -28,6 +29,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/results").setViewName("results");
+        registry.addViewController("/deleted").setViewName("deleted");
     }
 
     @GetMapping("/")
@@ -42,8 +44,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/visit/{ID}")
-    public String showDetailedVisit(@PathVariable("ID") int id, Model model){
-    	model.addAttribute("id", id);
+    public String showDetailedVisit(@PathVariable("ID") Long id, Model model){
     	model.addAttribute("visit", dentistVisitService.getVisitById(id));
     	return "detailedVisit";
     }
@@ -70,4 +71,9 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         return "redirect:/results";
     }
 
+    @PostMapping("/delete/{ID}")
+    public String deleteVisit(@PathVariable("ID") Long id) {
+    	dentistVisitService.deleteVisit(id);
+    	return "redirect:/deleted";
+    }
 }

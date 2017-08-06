@@ -33,8 +33,11 @@ public class DentistVisitDao {
 		return entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE 0=0" + sb.toString()).getResultList();
 	}
 
-	public DentistVisitEntity getVisitById(int id){
-		System.err.println(entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE id = " + Integer.toString(id)).getFirstResult());
-		return (DentistVisitEntity) entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE id = " + Integer.toString(id)).getResultList().get(0);
+	public DentistVisitEntity getVisitById(Long id){
+		return (DentistVisitEntity) entityManager.createQuery("SELECT e FROM DentistVisitEntity e WHERE id = " + id.toString()).getResultList().get(0);
+	}
+
+	public void deleteVisit(DentistVisitEntity dentistVisitEntity) {
+		entityManager.remove(dentistVisitEntity);
 	}
 }

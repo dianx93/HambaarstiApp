@@ -35,7 +35,7 @@ public class DentistVisitDTO {
         this.visitDate = visitDate;
         this.visitTime = visitTime;
     }
-
+    
     public String getDentistName() {
         return dentistName;
     }

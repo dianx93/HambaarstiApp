@@ -31,8 +31,12 @@ public class DentistVisitService {
         return dentistVisitDao.getVisitsByParameters(dentistName, visitDate, visitTime);
     }
     
-    public DentistVisitEntity getVisitById (int id){
+    public DentistVisitEntity getVisitById (Long id){
     	return dentistVisitDao.getVisitById(id);
     }
+
+	public void deleteVisit(Long id) {
+		dentistVisitDao.deleteVisit(getVisitById(id));		
+	}
 
 }
