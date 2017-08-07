@@ -11,7 +11,15 @@
         </tr>
         <tr>
             <td><p th:text="#{perearsti.nimi}">perearsti.nimi</p></td>
-            <td><select th:field="*{gpName}"/></td>
+            <td>
+            	<select th:field="*{gpName}">
+            		<option value="" hidden="true"></option>
+					<option th:value="#{mari.maasikas}" th:text="#{mari.maasikas}">mari.maasikas</option>
+					<option th:value="#{toomas.toomingas}" th:text="#{toomas.toomingas}">toomas.toomingas</option>
+					<option th:value="#{toivo.tamm}" th:text="#{toivo.tamm}">toivo.tamm</option>
+					<option th:value="#{vaike.vaarikas}" th:text="#{vaike.vaarikas}">vaike.vaarikas</option>
+            	</select>
+            </td>
             <td th:if="${#fields.hasErrors('gpName')}" th:errors="*{gpName}">Nime viga</td>
         </tr>
         <tr>
