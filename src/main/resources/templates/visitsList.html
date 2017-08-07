@@ -33,12 +33,12 @@
             <th th:text="#{visiidi.kellaaeg}">visiidi.kellaaeg</th>
         </tr>
         <th:block th:each="visit :${list}">
-        <tr th:onclick="'window.document.location=\'/visit/' + ${visit.id} + '\''">
-            <td th:text="${visit.dentistName}"></td>
-            <td th:text="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"></td>
-            <td th:text="${#dates.format(visit.visitTime, 'HH:mm')}"></td>
-            <td><button type="button" th:text="#{vaata.detaile}">vaata.detaile</button></td>
-        </tr>
+	        <tr th:onclick="'window.document.location=\'/visit/' + ${visit.id} + '\''">
+	            <td th:text="${visit.dentistName}"></td>
+	            <td th:text="${#dates.format(visit.visitDate, 'dd.MM.yyyy')}"></td>
+	            <td th:text="${#dates.format(visit.visitTime, 'HH:mm')}"></td>
+	            <td><button type="button" th:text="#{vaata.detaile}">vaata.detaile</button></td>
+	        </tr>
         </th:block>
     </table>
 </body>

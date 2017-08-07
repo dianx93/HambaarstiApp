@@ -51,6 +51,7 @@ public class DentistVisitDao {
 		entityManager.merge(dentistVisitEntity);
 	}
 	
+	//id on muudetava visiidi id, uue visiidi registreerumisel id == null
 	public boolean isConflictFree(DentistVisitDTO visit, Long id){
 		String idQuery = "";
 		if (id != null) idQuery = "id != '" + id + "' AND";
